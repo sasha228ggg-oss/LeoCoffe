@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo Coffee — кофейня на Береговой, 117Б</title>
+<meta name="description" content="Leo Coffee — уютная кофейня в Красном Аксае. Вкусный кофе, хот-доги, вафли, чай. Рейтинг 4.9 на Яндекс.Картах.">
+<style>
+:root{
+  --cream:#FAF7F2; --sand:#EFE7DB; --beige:#E3D6C3; --latte:#C8A97E;
+  --caramel:#A67C52; --text:#3E332A; --muted:#8A7A6A; --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+img{display:block;max-width:100%}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:.5px}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--caramel);margin-bottom:12px}
+.section-title{font-size:clamp(28px,4vw,44px);margin-bottom:16px}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,box-shadow .3s}
+header.scrolled{background:rgba(250,247,242,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(62,51,42,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1140px;margin:0 auto}
+.logo{font-family:Georgia,serif;font-size:26px;color:var(--text);text-decoration:none}
+.logo span{color:var(--caramel)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text);text-decoration:none;font-size:14px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--caramel)}
+.nav .cta{padding:10px 22px;border:1px solid var(--text);border-radius:100px;font-size:13px;text-decoration:none;color:var(--text);transition:.25s}
+.nav .cta:hover{background:var(--text);color:var(--cream)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.05;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--caramel)}
+.hero p{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:32px}
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.badge{background:var(--white);border:1px solid var(--beige);border-radius:100px;padding:8px 18px;font-size:13px;display:flex;align-items:center;gap:8px}
+.badge strong{color:var(--caramel)}
+.btn{display:inline-block;padding:14px 34px;border-radius:100px;text-decoration:none;font-size:15px;transition:.25s}
+.btn-solid{background:var(--text);color:var(--cream)}
+.btn-solid:hover{background:var(--caramel)}
+.btn-outline{border:1px solid var(--text);color:var(--text);margin-left:12px}
+.btn-outline:hover{background:var(--text);color:var(--cream)}
+.hero-photo{position:relative}
+.hero-photo img{border-radius:24px;width:100%;height:520px;object-fit:cover;box-shadow:0 30px 60px -20px rgba(62,51,42,.35)}
+.hero-photo .card{position:absolute;bottom:24px;left:-24px;background:var(--white);border-radius:18px;padding:18px 24px;box-shadow:0 16px 40px -12px rgba(62,51,42,.25);display:flex;align-items:center;gap:14px}
+.card .score{font-size:34px;font-family:Georgia,serif;color:var(--caramel)}
+.card .lbl{font-size:12px;color:var(--muted);line-height:1.3}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr}.hero-photo img{height:380px}}
+
+/* Sections */
+section{padding:96px 0}
+.alt{background:var(--sand)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-grid img{border-radius:20px;height:440px;width:100%;object-fit:cover}
+.about-text p{color:var(--muted);margin-bottom:18px}
+.feat-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.feat{background:var(--white);border-radius:14px;padding:16px 18px;border:1px solid var(--beige)}
+.feat b{display:block;font-size:14px;margin-bottom:4px}
+.feat small{color:var(--muted);font-size:12px}
+@media(max-width:920px){.about-grid{grid-template-columns:1fr}.feat-list{grid-template-columns:1fr 1fr}}
+
+/* Menu */
+.menu-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
+.menu-card{background:var(--white);border-radius:20px;overflow:hidden;border:1px solid var(--beige);transition:transform .3s,box-shadow .3s}
+.menu-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -16px rgba(62,51,42,.25)}
+.menu-card img{height:200px;width:100%;object-fit:cover}
+.menu-card .body{padding:22px}
+.menu-card h3{font-size:19px;margin-bottom:8px}
+.menu-card p{font-size:13.5px;color:var(--muted)}
+.price{margin-top:12px;font-family:Georgia,serif;color:var(--caramel);font-size:16px}
+@media(max-width:920px){.menu-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.menu-cards{grid-template-columns:1fr}}
+
+/* Reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.rev{background:var(--white);border-radius:20px;padding:28px;border:1px solid var(--beige);display:flex;flex-direction:column;transition:transform .3s}
+.rev:hover{transform:translateY(-4px)}
+.stars{color:var(--latte);letter-spacing:2px;margin-bottom:14px;font-size:15px}
+.rev p{font-size:14.5px;color:var(--text);font-style:italic;flex:1}
+.rev .who{margin-top:18px;display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--beige);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;color:var(--caramel);font-size:16px}
+.who b{font-size:13.5px}
+.who small{display:block;color:var(--muted);font-size:11.5px}
+.rating-band{margin-top:56px;background:var(--white);border:1px solid var(--beige);border-radius:24px;padding:36px;display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:space-around;text-align:center}
+.rating-band .big{font-size:52px;font-family:Georgia,serif;color:var(--caramel);line-height:1}
+.rating-band small{color:var(--muted)}
+@media(max-width:920px){.rev-grid{grid-template-columns:1fr}}
+
+/* Gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:16px;margin-top:40px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:16px;transition:transform .4s}
+.gal img:hover{transform:scale(1.03)}
+.gal .w2{grid-column:span 2}
+.gal .h2{grid-row:span 2}
+@media(max-width:920px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:180px}}
+
+/* Contacts */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.contact-item{display:flex;gap:18px;align-items:flex-start;margin-bottom:26px}
+.icon{width:46px;height:46px;flex:0 0 46px;border-radius:14px;background:var(--white);border:1px solid var(--beige);display:flex;align-items:center;justify-content:center;font-size:19px}
+.contact-item b{display:block;font-size:14px;margin-bottom:2px}
+.contact-item a,.contact-item span.val{color:var(--muted);font-size:14.5px;text-decoration:none}
+.contact-item a:hover{color:var(--caramel)}
+.map-frame{border-radius:22px;overflow:hidden;border:1px solid var(--beige);box-shadow:0 24px 48px -16px rgba(62,51,42,.2)}
+.map-frame iframe{width:100%;height:380px;border:0;display:block}
+@media(max-width:920px){.contacts-grid{grid-template-columns:1fr}}
+
+footer{background:var(--text);color:var(--beige);padding:36px 0;text-align:center;font-size:13.5px}
+footer .logo{color:var(--cream)}
+footer a{color:var(--latte);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <nav class="nav">
+    <a class="logo" href="#top">Leo <span>Coffee</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#menu">Меню</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#gallery">Фото</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a class="cta" href="https://yandex.ru/maps/org/leo_coffee/131796590626" target="_blank" rel="noopener">Мы на карте</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Кофейня · Красный Аксай</span>
+      <h1>Место, где утро<br>начинается <em>с кофе</em></h1>
+      <p>Уютная кофейня в светлых бежевых тонах. Готовим кофе на зерне специальной обжарки, печём вафли и собираем хот-доги в булочках бриошь.</p>
+      <div class="hero-badges">
+        <div class="badge">★ <strong>4.9</strong>&nbsp;на Яндекс.Картах</div>
+        <div class="badge">Капучино — <strong>200–399 ₽</strong></div>
+        <div class="badge">Можно <strong>с собакой</strong></div>
+      </div>
+      <a class="btn btn-solid" href="#contacts">Как нас найти</a>
+      <a class="btn btn-outline" href="#menu">Меню</a>
+    </div>
+    <div class="hero-photo">
+      <img src="images/interior1.png" alt="Интерьер кофейни Leo Coffee">
+      <div class="card">
+        <div class="score">4.9</div>
+        <div class="lbl">Рейтинг Яндекс.Карт<br>26 оценок гостей</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <img src="images/interior2.png" alt="Зал кофейни Leo Coffee">
+    <div class="about-text">
+      <span class="eyebrow">О кофейне</span>
+      <h2 class="section-title">Спокойное место<br>в ритме района</h2>
+      <p>Leo Coffee открылась недавно, но уже стала точкой притяжения Красного Аксая. Минималистичный светлый интерьер, огромное зеркало и мягкий свет — здесь приятно и с ноутбуком, и просто посидеть за окном.</p>
+      <p>Мы работаем каждый день и рады гостям с питомцами: у нас петфрендли, есть столики внутри и на улице.</p>
+      <div class="feat-list">
+        <div class="feat"><b>Wi-Fi и розетки</b><small>удобно работать с ноутбуком</small></div>
+        <div class="feat"><b>Кофе с собой</b><small>takeout и оплата по QR</small></div>
+        <div class="feat"><b>Петфрендли</b><small>можно со всеми животными</small></div>
+        <div class="feat"><b>Доступная среда</b><small>полный доступ для колясок</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="alt" id="menu">
+  <div class="container">
+    <span class="eyebrow">Что попробовать</span>
+    <h2 class="section-title">Наши фирменные позиции</h2>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <img src="images/latte.png" alt="Латте-арт">
+        <div class="body">
+          <h3>Капучино и латте</h3>
+          <p>Мягкий, сбалансированный вкус и аккуратный латте-арт. Классика, ради которой возвращаются.</p>
+          <div class="price">от 200 ₽</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="images/bar.png" alt="Барная стойка Leo Coffee">
+        <div class="body">
+          <h3>Горячий бамбл</h3>
+          <p>Редкий для района напиток, который у нас готовят именно так, как должен быть. Секрет гостей знают.</p>
+          <div class="price">чек 200–399 ₽</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="images/latte2.png" alt="Кофе с молоком">
+        <div class="body">
+          <h3>Чай и чай-латте</h3>
+          <p>Разнообразный ассортимент чая — для тех, кто любит греться по-другому. Есть какао.</p>
+          <div class="price">от 200 ₽</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="images/interior1.png" alt="Атмосфера кофейни">
+        <div class="body">
+          <h3>Хот-доги и вафли</h3>
+          <p>Хот-дог в булочке бриошь с хрустящим луком и свежие вафли — идеальная пара к кофе.</p>
+          <div class="price">к кофе — идеально</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <span class="eyebrow">Отзывы гостей</span>
+    <h2 class="section-title">Нас советуют соседи</h2>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>«Очень понравился латте — мягкий, сбалансированный и действительно вкусный. Видно, что кофе готовят с душой. Желаем вам процветания и много довольных гостей!»</p>
+        <div class="who"><div class="avatar">Е</div><div><b>Елена</b><small>Яндекс.Карты · июль</small></div></div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>«Можно по пальцам пересчитать кофейни, где готовят именно горячий бамбл, да ещё и вкусно. В LEO — именно так! А хот-дог в бриоше с хрустящим луком — супер!»</p>
+        <div class="who"><div class="avatar">Д</div><div><b>Дмитрий К.</b><small>Яндекс.Карты · август</small></div></div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>«Милая, уютная кофейня с минималистичным стилем! Разнообразие кофе, вкусный чай, вафли и хот-доги. Есть столики внутри и уютные места снаружи.»</p>
+        <div class="who"><div class="avatar">Я</div><div><b>Яндекс.Карты</b><small>Local Expert · август</small></div></div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>«Почти каждый день беру хот-доги в этой кофейне, ооочень вкусно! Персонал и владельцы — очень приятные люди. В заведении чисто и красиво.»</p>
+        <div class="who"><div class="avatar">Г</div><div><b>Гость</b><small>Яндекс.Карты · сентябрь</small></div></div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>«Уверена, что вернёмся ещё не раз. Очень вкусный кофе и какао, вежливый бариста и уютный интерьер. Спасибо за такое место!»</p>
+        <div class="who"><div class="avatar">Э</div><div><b>Элла Демская</b><small>Яндекс.Карты · август</small></div></div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>«Захожу всегда, когда бываю рядом. Очень вкусное какао, кофе пробовали даже друзья из Москвы — были восторге от качества напитков. 100% рекомендую.»</p>
+        <div class="who"><div class="avatar">Г</div><div><b>Гость</b><small>Яндекс.Карты · октябрь</small></div></div>
+      </div>
+    </div>
+    <div class="rating-band">
+      <div><div class="big">4.9</div><small>рейтинг на Яндекс.Картах</small></div>
+      <div><div class="big">26</div><small>оценок гостей</small></div>
+      <div><div class="big">19</div><small>тёплых отзывов</small></div>
+      <a class="btn btn-solid" href="https://yandex.ru/maps/org/leo_coffee/131796590626" target="_blank" rel="noopener">Оставить отзыв</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="alt" id="gallery">
+  <div class="container">
+    <span class="eyebrow">Фотографии</span>
+    <h2 class="section-title">Атмосфера Leo Coffee</h2>
+    <div class="gal">
+      <img class="w2 h2" src="images/interior1.png" alt="Барная стойка со светильниками LEO">
+      <img src="images/latte.png" alt="Латте-арт">
+      <img src="images/interior2.png" alt="Зал кофейни">
+      <img src="images/bar.png" alt="Кофемашина">
+      <img class="w2" src="images/mood.png" alt="Светлый минималистичный интерьер">
+      <img src="images/latte2.png" alt="Капучино крупным планом">
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="container contacts-grid">
+    <div>
+      <span class="eyebrow">Контакты</span>
+      <h2 class="section-title">Ждём вас у Красного Аксая</h2>
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <div><b>Адрес</b><a class="val" href="https://yandex.ru/maps/org/leo_coffee/131796590626" target="_blank" rel="noopener">Ростов-на-Дону, Береговая ул., 117Б, стр. 8<br>остановка «Красный Аксай» — 810 м</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">💳</div>
+        <div><b>Оплата</b><span class="val">карта, наличные, QR-код</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">🐕</div>
+        <div><b>С питомцами</b><span class="val">разрешено со всеми животными</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon">♿</div>
+        <div><b>Доступность</b><span class="val">полный доступ для маломобильных гостей</span></div>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=39.712%2C47.276&mode=whatshere&whatshere%5Bpoint%5D=39.712%2C47.276&whatshere%5Bzoom%5D=17&z=17" loading="lazy" title="Карта — Leo Coffee"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <a class="logo" href="#top">Leo <span>Coffee</span></a>
+    <p style="margin-top:10px">Береговая ул., 117Б, стр. 8 · Красный Аксай · <a href="https://yandex.ru/maps/org/leo_coffee/131796590626" target="_blank" rel="noopener">рейтинг 4.9 на Яндекс.Картах</a></p>
+  </div>
+</footer>
+
+<script>
+const h=document.getElementById('header');
+addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>40),{passive:true});
+</script>
+</body>
+</html>
